@@ -1,0 +1,27 @@
+<templates id="template" inherit_id="point_of_sale.template">
+
+    <t t-extend="PosTicket">
+        <t t-jquery="t[t-if*='receipt.footer']" t-operation="after">
+            <div class="pos-center-align" t-if="order.is_save_order == true">
+                <span>
+                    <b>NOT SAVED YET</b>
+                </span>
+            </div>
+        </t>
+    </t>
+
+    <t t-extend="XmlReceipt">
+        <t t-jquery="[t-foreach='paymentlines']" t-operation="after">
+            <t t-if="receipt.is_save_order == true">
+                <line line-ratio="2.0">
+                    <left>
+                        <span>
+                            <b>NOT SAVED YET</b>
+                        </span>
+                    </left>
+                </line>
+            </t>
+        </t>
+    </t>
+
+</templates>
