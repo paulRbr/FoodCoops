@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  database:
+    image: "postgres:12"
+    env_file: .env
+    volumes:
+      - "/data/foodcoops-db:/var/lib/postgresql/data"
+  app:
+    build: .
+    env_file: .env
+    ports:
+      - "8069:8069"
+    links:
+      - "database:database"
+    volumes:
+      - "/data/foodcoops:/root/.local/share/Odoo"
