@@ -5,7 +5,7 @@ services:
     image: "postgres:12"
     env_file: .env
     volumes:
-      - "/data/foodcoops-db:/var/lib/postgresql/data"
+      - "/var/lib/postgresql/data"
   app:
     build: .
     env_file: .env
@@ -14,4 +14,4 @@ services:
     links:
       - "database:database"
     volumes:
-      - "/data/foodcoops:/root/.local/share/Odoo"
+      - "/home/app/.local/share/Odoo"
