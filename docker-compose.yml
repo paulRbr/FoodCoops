@@ -17,3 +17,7 @@ services:
       - "database:database"
     volumes:
       - "odoo-shared-data:/home/app/.local/share/Odoo"
+
+volumes:
+  odoo-shared-data:
+  odoo-pg-data:
