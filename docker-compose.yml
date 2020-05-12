@@ -4,14 +4,16 @@ services:
   database:
     image: "postgres:12"
     env_file: .env
+    restart: always
     volumes:
-      - "/var/lib/postgresql/data"
+      - "odoo-pg-data:/var/lib/postgresql/data"
   app:
     build: .
     env_file: .env
+    restart: always
     ports:
       - "8069:8069"
     links:
       - "database:database"
     volumes:
-      - "/home/app/.local/share/Odoo"
+      - "odoo-shared-data:/home/app/.local/share/Odoo"
